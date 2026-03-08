@@ -1,0 +1,55 @@
+APNR_CB/
+├── app/
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── config1.py
+│   │   ├── container.py
+│   │   └── session.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── connection.py
+│   │   ├── database.py
+│   │   └── dbmodels.py
+│   ├── inference/
+│   │   ├── __init__.py
+│   │   ├── pipeline.py
+│   │   └── types.py
+│   ├── repos/
+│   │   ├── __init__.py
+│   │   └── users_repo.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── detection_services.py
+│   │   ├── logger.py
+│   │   ├── services.py
+│   │   ├── user_services.py
+│   │   └── vehicle_services.py
+│   ├── ui/
+│   │   ├── __init__.py
+│   │   ├── gui_login.py
+│   │   └── gui_main.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── hasher.py
+│   │   ├── helpers.py
+│   │   ├── pathfinder.py
+│   │   └── sound.py
+│   └── __init__.py
+├── db/
+│   └── police_db.sqlite
+├── logs/
+│   ├── __init__.py
+│   ├── access.log
+│   ├── detections.log
+│   └── errors.log
+├── models/
+│   ├── fast-plate-ocr/
+│   │   ├── cct_s_relu_v1_global...
+│   │   ├── cct_s_v1_global...
+│   │   ├── cct_xs_relu_v1_global...
+│   │   ├── cct_xs_v1_global...
+│   │   └── european_mobile_v...
+│   └── license_plate_detector/
+│       └── license-plate-finetune-v1n.onnx
+├── create_admin.py
+└── main.py
