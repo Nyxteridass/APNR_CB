@@ -44,3 +44,27 @@
 ## Διαχείριση Σφαλμάτων & Logging
 Όλο το σύστημα τυλίγεται γύρω από δομές `try...except`. 
 Κάθε σφάλμα στέλνεται στο `logger.log_error()`, το οποίο με τη σειρά του γράφει στο `logs/errors.log` (Μαζί με το Timestamp, τον τύπο του Error και το Αρχείο που το προκάλεσε). Υπάρχει πλήρες Audit Trail (ποιος μπήκε, ποιος πρόσθεσε όχημα) στο `logs/access.log`.
+
+
+
+
+
+
+
+
+
+## 🛡️ License & Open Source Compliance
+
+This application is licensed under the **GNU Affero General Public License v3 (AGPL-3.0)**. 
+
+### Why AGPL v3?
+We believe in the freedom of software. Unlike the standard GPL, the **AGPL v3** is designed specifically for network-interacted software (SaaS). It ensures that:
+* **Remote Interaction:** If this application is modified and run on a server for public use, the modified source code **must** be made available to those users.
+* **Copyleft:** Any derivative works must also be licensed under the AGPL v3.
+* **Transparency:** Users interacting with this software over a network have the right to receive a copy of the source code.
+
+### Personal/Private Use
+While this repository is currently **Private**, the inclusion of this license ensures that any future deployment or distribution remains compliant with open-source standards.
+
+---
+*For more details, see the [LICENSE](LICENSE) file in the root directory.*
