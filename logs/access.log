@@ -1,0 +1,60 @@
+2026-02-26 03:32:11, admin, admin, Successful Login Attempt
+2026-02-26 03:37:12, admin, admin, Successful Login Attempt
+2026-02-26 03:46:18, admin, admin, Successful Login Attempt
+2026-02-26 03:57:17, admin, admin, Successful Login Attempt
+2026-02-26 03:58:53, admin, admin, Successful Login Attempt
+2026-02-26 04:00:05, admin, admin, Successful Login Attempt
+2026-02-26 04:01:47, admin, admin, Successful Login Attempt
+2026-02-26 04:05:24, admin, admin, Successful Login Attempt
+2026-02-26 04:24:34, admin, admin, Successful Login Attempt
+2026-02-26 04:32:27, admin, admin, Successful Login Attempt
+2026-02-26 04:35:49, admin, admin, Successful Login Attempt
+2026-02-26 04:43:00, admin, admin, Successful Login Attempt
+2026-02-26 04:44:31, admin, admin, Successful Login Attempt
+2026-02-27 17:12:52, admin, admin, Successful Login Attempt
+2026-02-27 17:13:05, admin, admin, Successful Login Attempt
+2026-02-27 17:14:17, EPX6876, WANTED, ADDED_TO_DB, 
+2026-02-27 17:14:46, IPM5007, STOLEN, ADDED_TO_DB, 
+2026-02-27 17:16:20, KNA486, STOLEN, ADDED_TO_DB, 
+2026-02-27 17:20:20, admin, admin, Successful Login Attempt
+2026-02-27 17:32:37, admin, admin, Successful Login Attempt
+2026-02-27 17:33:02, EPX6876, WANTED, ADDED_TO_DB 
+2026-02-27 17:37:21, admin, admin, Successful Login Attempt
+2026-02-27 17:37:57, EPX6876, WANTED, ADDED_TO_DB 
+2026-02-27 17:38:09, IPM5007, STOLEN, ADDED_TO_DB 
+2026-02-27 17:39:33, KNA486, WANTED, ADDED_TO_DB 
+2026-03-01 20:32:54, cb, UNKNOWN, Failed Login Attempt - User 'cb' not found in database.
+2026-03-01 20:33:00, cb, UNKNOWN, Failed Login Attempt - User 'cb' not found in database.
+2026-03-01 20:33:07, cb, UNKNOWN, Failed Login Attempt - User 'cb' not found in database.
+2026-03-01 20:33:14, test, UNKNOWN, Failed Login Attempt - User 'test' not found in database.
+2026-03-01 20:33:19, test, UNKNOWN, Failed Login Attempt - User 'test' not found in database.
+2026-03-01 20:33:30, admin, ADMINISTRATOR, Successful Login Attempt
+2026-03-01 20:35:22, cb, UNKNOWN, Failed Login Attempt - User 'cb' not found in database.
+2026-03-01 20:35:29, test, UNKNOWN, Failed Login Attempt - User 'test' not found in database.
+2026-03-01 20:35:46, admin, ADMINISTRATOR, Successful Login Attempt
+2026-03-01 20:36:36, admin, ADMINISTRATOR, Επιτυχής δημιουργία λογαριασμού (supervisor): cb
+2026-03-01 20:36:49, admin, ADMINISTRATOR, Επιτυχής δημιουργία λογαριασμού (user): test
+2026-03-01 20:37:17, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 20:42:09, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:05:14, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:27:47, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:34:24, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:37:27, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:41:03, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:43:25, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:45:25, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:51:33, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:51:45, AAA1234, WANTED, ADDED_TO_DB 
+2026-03-01 21:58:43, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 21:59:16, ANH4981, WANTED, ADDED_TO_DB 
+2026-03-01 22:18:46, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 22:20:33, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 22:22:33, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 22:22:53, ABC1234, STOLEN, ADDED_TO_DB 
+2026-03-01 22:25:09, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 22:28:00, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 22:33:04, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 22:33:31, ANH4981, STOLEN, ADDED_TO_DB 
+2026-03-01 23:30:34, cb, SUPERVISOR, Successful Login Attempt
+2026-03-01 23:31:17, ABC123, STOLEN, ADDED_TO_DB 
+2026-03-01 23:38:35, cb, SUPERVISOR, Successful Login Attempt
