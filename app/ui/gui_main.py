@@ -271,6 +271,7 @@ class MainWindow:
                     
             except Exception as e:
                 print(f"\n[ΣΦΑΛΜΑ ΣΤΟ DETECT THREAD]: {e}")
+                log_error("DetectThreadError", "gui_main.py", str(e))
                 traceback.print_exc()
                 with self.lock:
                     self.latest_results = []

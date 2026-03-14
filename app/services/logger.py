@@ -18,7 +18,7 @@ def _setup_logger(name: str, log_file: str) -> logging.Logger:
         #  και μετά το μήνυμα που δέχεται στο αντίστοιχο αρχείο 
         formatter = logging.Formatter('%(asctime)s, %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
         
-        file_handler = logging.FileHandler(LOGS_DIR / "logs", encoding='utf-8')
+        file_handler = logging.FileHandler(LOGS_DIR / log_file, encoding='utf-8')
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
         
