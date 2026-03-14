@@ -1,0 +1,7 @@
+opencv-python
+numpy
+SQLAlchemy
+bcrypt
+fast-plate-ocr
+Pillow
+gpiozero
