@@ -19,3 +19,4 @@ class DBConnectionManager:
     def get_session():
         # Επιστρέφω ένα νέο session για να μπορέσουμε να κάνουμε queries στο police_db.sqlite 
         return DBConnectionManager.SessionLocal()
+
