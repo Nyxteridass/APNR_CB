@@ -6,7 +6,8 @@ import threading
 import time
 import os
 import traceback
-from app.services.logger import log_error, log_detection,LOGS_DIR
+from app.services.logger import log_error, log_detection
+from app.utils.pathfinder import Labyrinth
 from app.core.session import SessionManager
 import app.core.config1 as config
 from app.services.user_services import UserManagementService
@@ -384,7 +385,7 @@ class MainWindow:
         txt = scrolledtext.ScrolledText(win, width=70, height=20)
         txt.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
-        logs_path = LOGS_DIR/ "detections.log"
+        logs_path = Labyrinth.get_results_file_path('detections.log')
 
         try:
             with open(logs_path, "r") as f:
@@ -398,6 +399,7 @@ class MainWindow:
     def on_exit(self):
         # Exit button - για το ομαλό κλείσιμο της εφαρμογής.
         if messagebox.askokcancel("Exit", "Quit system?"):
+            SessionManager.clear()
             self.stop_camera()
             self.root.destroy()
             os._exit(0)

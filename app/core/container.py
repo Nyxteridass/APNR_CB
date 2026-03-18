@@ -1,4 +1,3 @@
-# container.py
 from app.inference.pipeline import InferencePipeline
 from app.services.detection_services import DetectionService 
 from app.core import config1

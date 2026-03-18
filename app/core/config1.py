@@ -1,7 +1,7 @@
 import cv2
-# =======================
-# CONFIG (Pi 3B+ oriented)
-# =======================
+# =================================
+# CONFIGURATION FILE για το RPi 3B+
+# =================================
 CAMERA_ID = 0
 
 # Capture video size - ιδιαίτερα σημαντικό για την απόδοση σε Pi 3B+
@@ -20,7 +20,6 @@ DIGITS = "0123456789"
 
 CONF_THRESHOLD = 0.45
 NMS_THRESHOLD = 0.50
-
 MODEL_INP = 320
 
 FAST_OCR_MODELS = [
