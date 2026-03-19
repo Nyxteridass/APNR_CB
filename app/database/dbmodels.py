@@ -4,8 +4,9 @@ from sqlalchemy import String
 from sqlalchemy import Enum as SQLEnum
 
 
-# Κλάσεις με τα entities που θα δημιουργηθούν στη ΒΔ μας. Η SQLAlchemy αναλαμβάνει τη δημιουργία των πινάκων
-# και των πεδίων τους, καθώς και τη διαχείριση των queries.
+# Κλάσεις με τα entities που θα δημιουργηθούν στη ΒΔ μας.
+#  Η SQLAlchemy αναλαμβάνει τη δημιουργία των πινάκων και 
+# των πεδίων τους, καθώς και τη διαχείριση των queries.
 
 class Base(DeclarativeBase):
     pass
@@ -15,7 +16,10 @@ class UserRole(str , enum.Enum):
     SUPERVISOR = "SUPERVISOR"
     ADMIN = "ADMINISTRATOR"
     
-
+class VehicleStatus(str ,enum.Enum):
+    STOLEN = "STOLEN"
+    WANTED = "WANTED"
+    CLEAN = "CLEAN"
 
 class User(Base):
     __tablename__ = "users"
@@ -23,13 +27,6 @@ class User(Base):
     username: Mapped[str] = mapped_column(String(50), unique=True)
     password: Mapped[str] = mapped_column(String(255), nullable=False) # Hashed
     role: Mapped[UserRole] = mapped_column(SQLEnum(UserRole), default= UserRole.USER)
-
-
-class VehicleStatus(str ,enum.Enum):
-    STOLEN = "STOLEN"
-    WANTED = "WANTED"
-    CLEAN = "CLEAN"
-
 
 class StolenVehicle(Base):
     __tablename__ = "stolen_vehicles"
