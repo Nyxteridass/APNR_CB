@@ -1,10 +1,12 @@
 import logging
-from app.utils.pathfinder import LOGS_DIR_PATH
+from pathlib import Path
+from app.utils.pathfinder import BASE_DIR
 
 #Εισάγουμε το BASE_DIR και πριν την δημιουργία του logger ελέγχουμε την ύπαρξη 
 # του φακέλου με τα logs.Στην περίπτωση που δεν υπάρχει - δημιουργείται εδώ.
 
-LOGS_DIR_PATH.mkdir(exist_ok=True)
+LOGS_DIR = Path(BASE_DIR) / "logs"
+LOGS_DIR.mkdir(exist_ok=True)
 
 def _setup_logger(name: str, log_file: str) -> logging.Logger:
     #Δημιουργούμε ένα logger setup (generic).
@@ -17,7 +19,7 @@ def _setup_logger(name: str, log_file: str) -> logging.Logger:
         #  και μετά το μήνυμα που δέχεται στο αντίστοιχο αρχείο 
         formatter = logging.Formatter('%(asctime)s, %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
         
-        file_handler = logging.FileHandler(LOGS_DIR_PATH / log_file, encoding='utf-8')
+        file_handler = logging.FileHandler(LOGS_DIR / log_file, encoding='utf-8')
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
                 
