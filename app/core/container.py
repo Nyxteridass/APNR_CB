@@ -10,3 +10,4 @@ class Container:
         
         # 2. Αρχικοποίηση του Service της βάσης
         self.detection_service = DetectionService()
+

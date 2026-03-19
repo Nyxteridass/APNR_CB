@@ -29,3 +29,4 @@ def verify_password(stored_hash: str, provided_password: str) -> bool:
     except ValueError:
         # Σε περίπτωση που το stored_hash δεν είιναι έγκυρο hash, απορρίπτουμε την προσπάθεια.
         return False
+    

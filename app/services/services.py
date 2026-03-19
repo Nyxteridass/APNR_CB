@@ -18,3 +18,4 @@ class AuthService:
     @staticmethod
     def logout():
         SessionManager.clear()
+

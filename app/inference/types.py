@@ -9,3 +9,4 @@ class DetectionResult:
     confidence: float
     plate_text: str = ""
     status: str = "CLEAN"
+

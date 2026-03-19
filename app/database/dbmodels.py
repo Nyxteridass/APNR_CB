@@ -36,3 +36,5 @@ class StolenVehicle(Base):
     plate_number: Mapped[str] = mapped_column(primary_key=True)
     # Χρησιμοποιούμε SQLEnum για τη βάση και το VehicleStatus για την Python
     status: Mapped[VehicleStatus] = mapped_column(SQLEnum(VehicleStatus), default=VehicleStatus.CLEAN)
+
+

@@ -12,3 +12,4 @@ class VehicleService:
             return True, f"Το όχημα με πινακίδα {plate} προστέθηκε επιτυχώς!"
         except Exception as e:
             return False, f"Σφάλμα κατά την προσθήκη του οχήματος: {str(e)}"
+        

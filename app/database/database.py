@@ -16,12 +16,14 @@ class DatabaseManager:
             return None, "CLEAN", "#ecf0f1" # Default γκρι
 
         session = DBConnectionManager.get_session()
-        # Ψάχνουμε στη βάση εάν το όχημα είναι καταχωρημένο ως STOLEN, ή WANTED. Εάν όχι, θεωρούμε ότι είναι CLEAN.
+        # Ψάχνουμε στη βάση εάν το όχημα είναι καταχωρημένο ως STOLEN, ή WANTED.
+        #  Εάν όχι, θεωρούμε ότι είναι CLEAN.
         vehicle = session.query(StolenVehicle).filter_by(plate_number=clean_text).first()
         session.close()
 
         if vehicle:
-            # Δίνουμε χρώμα ανάλογα με το status του οχήματος στη βάση για να περάσει ως alert στο UI παρακάτω
+            # Δίνουμε χρώμα ανάλογα με το status του οχήματος στη βάση για να περάσει 
+            # ως alert στο UI παρακάτω
             colors = {
                 VehicleStatus.STOLEN: "#c0392b", # Κόκκινο
                 VehicleStatus.WANTED: "#d35400", # Πορτοκαλί
@@ -37,8 +39,10 @@ class DatabaseManager:
         # Προσθήκη οχήματος που είναι STOLEN/WANTED στη βάση μας. 
         session = DBConnectionManager.get_session()
         try:
-            # Διασφάλιση εγκυρότητας του status του οχήματος. Στο combobox του UI ΔΕΝ έχουμε άλλη επιλογή,
-            # βεβαιωνόμαστε ότι σε περίπτωση σφάλματος, δε θα "χτυπήσει" η βάση ή δε θα κρασάρει η εφαρμογή.
+            # Διασφάλιση εγκυρότητας του status του οχήματος.
+            #  Στο combobox του UI ΔΕΝ έχουμε άλλη επιλογή,
+            # βεβαιωνόμαστε ότι σε περίπτωση σφάλματος, δε θα 
+            # "χτυπήσει" η βάση ή δε θα κρασάρει η εφαρμογή.
             
             status_enum = VehicleStatus(status_string.upper())
             

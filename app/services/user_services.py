@@ -1,4 +1,3 @@
-# app/services/user_services.py
 from app.database.connection import DBConnectionManager
 from app.database.dbmodels import User, UserRole
 from app.services.logger import log_access, log_error
@@ -120,3 +119,5 @@ class UserManagementService:
             return False, f"Σφάλμα κατά την ενημέρωση στη βάση: Λάθος Ρόλος ή Δεδομένα. ({str(e)})"
         finally:
             session.close()
+
+
