@@ -1,6 +1,5 @@
 import os
 
-
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, '..','..'))  # Μετάβαση σε επίπεδο root
 MODEL_DETECTOR_PATH = os.path.join(BASE_DIR,   'models', 'license_plate_detector', 'license-plate-finetune-v1n.onnx')
@@ -10,14 +9,13 @@ RESULTS_FILE_PATH = os.path.join(BASE_DIR,  'logs',  'detections.log')
 ACCESS_LOG_FILE_PATH = os.path.join(BASE_DIR, 'logs', 'access.log')
 ERROR_LOG_FILE_PATH = os.path.join(BASE_DIR, 'logs', 'errors.log')
 LOGS_DIR_PATH = os.path.join(BASE_DIR, 'logs')
-
+#region Comments
 
 # Η κλάση Labyrinth έχει στατικές μεθόδους που επιστρέφουν τα paths για , ΒΔ, μοντέλα , Logs κλπ.
 # εάν οι φάκελοι ΔΕΝ υπάρχουν, τότε δημιουργούνται αυτόματα.
-
+#endregion
 class Labyrinth:
-
-    
+ 
     @staticmethod
     def get_model_detector() -> str:
         # Επιστρέφει το path του μοντέλου ανίχνευσης πινακίδων.
@@ -34,13 +32,11 @@ class Labyrinth:
             raise FileNotFoundError(f"Model file '{filename}' not found in '{MODEL_OCR_FOLDER_PATH}'")
         return str(target_path)
 
-
     @staticmethod
     def get_db_path(db_name='police_db.sqlite')-> str:
         #Επιστρέφει το path της ΒΔ. Σε περίπτωση που ο φάκελος ΔΕΝ υπάρχει , δημιουργείται.
         target_path = os.path.join(BASE_DIR, 'db',db_name)
-        directory = os.path.dirname(target_path)
-    
+        directory = os.path.dirname(target_path)   
         
         if not os.path.exists(directory):
             os.makedirs(directory) # Δημιουργεί τον φάκελο 'db' αν λείπει

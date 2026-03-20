@@ -2,10 +2,10 @@ import time
 import threading
 from gpiozero import TonalBuzzer
 from gpiozero.tones import Tone
-
+#region Comments
 #Κλάση που περιέχει μεθόδους για την αναπαραγωγή ήχων από το passive buzzer module. 
 # Γίνεται χρήση threading για να μην μπλοκάρει το κύριο πρόγραμμα κατά την αναπαραγωγή ήχων.
-
+#endregion
 class SoundGenerator:
     _instance = None 
 
