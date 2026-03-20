@@ -3,11 +3,11 @@ from app.database.dbmodels import User, UserRole
 from app.services.logger import log_access, log_error
 from app.utils.hasher import hash_password 
 from app.core.session import SessionManager
-
+#region
 # Υπηρεσία διαχείρισης χρηστών , με υλοποίηση Role-Based Access Control (RBAC). Χωρίζοντας και αναθέτοντας 
 #δυνατότητες ανάλογα με το ρόλο που έχει ο εκάστοτε χρήστης, μπορούμε να διασφαλίσουμε ότι ΜΟΝΟ αυτοί που 
 #έχουν κατάλληλα δικαιώματα μπορούν να πραγματοποιήσουν κάποιες ενέργειες - πχ CRUD χρηστών.
-
+#endregion
 class UserManagementService:
     @staticmethod
     def require_admin():
@@ -40,10 +40,8 @@ class UserManagementService:
             existing_user = session.query(User).filter_by(username=new_username).first()
             if existing_user:
                 return False, f"Το όνομα χρήστη '{new_username}' χρησιμοποιείται ήδη."
-            
-            
+                       
             role_enum = UserRole(role_to_assign.upper())
-            
             hashed_pw = hash_password(new_password)
                 
             new_user = User(
@@ -51,10 +49,8 @@ class UserManagementService:
                 password=hashed_pw,
                 role=role_enum
             )
-
             session.add(new_user)
             session.commit()
-
             # Καταγραφή της επιτυχούς ενέργειας
             log_access(SessionManager.get_current_user(), SessionManager.get_role(), f"Επιτυχής δημιουργία λογαριασμού ({role_enum.value}): {new_username}")
             return True, f"Ο λογαριασμός για τον χρήστη '{new_username}' με ρόλο '{role_enum.value}' δημιουργήθηκε με επιτυχία."
@@ -103,8 +99,7 @@ class UserManagementService:
             if user_to_update:
                 if new_password: # Αν δόθηκε νέος κωδικός
                     user_to_update.password = hash_password(new_password)
-                
-                
+                               
                 user_to_update.role = UserRole(new_role.upper())
                 
                 session.commit()
