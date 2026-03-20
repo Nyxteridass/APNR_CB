@@ -1,8 +1,8 @@
 import bcrypt
-
+#region Comments
 # Χρήση της βιβλιοθήκης bcrypt για την βέλτιστη αφάλεια κωδικών. 
 # η ενσωματωμένη χρήση salt αυξάνει την ασφάλεια.
-
+#endregion
 def hash_password(password: str) -> str:
     # Κάνουμε encode το password σε bytes- απαραίτητο για να λειτουργήσει το bcrypt.
     password_bytes = password.encode('utf-8')
@@ -19,7 +19,6 @@ def verify_password(stored_hash: str, provided_password: str) -> bool:
     if not stored_hash or not provided_password:
         return False  # Αν κάποιο από τα δύο είναι κενό, δεν μπορεί να ταιριάξει -ΑΠΟΡΡΙΨΗ
     
-
     provided_password_bytes = provided_password.encode('utf-8')
     stored_hash_bytes = stored_hash.encode('utf-8')
     
