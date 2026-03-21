@@ -45,17 +45,19 @@ class InferencePipeline:
         if self.net is None or frame_bgr is None:
             return []
 
-        # 1. Letterbox & Inference
+        # Letterbox & Inference
         img_lb, r, (pad_x, pad_y) = letterbox(frame_bgr, (config.MODEL_INP, config.MODEL_INP))
         blob = cv2.dnn.blobFromImage(img_lb, 1 / 255.0, (config.MODEL_INP, config.MODEL_INP), swapRB=True, crop=False)
         self.net.setInput(blob)
         outputs = self.net.forward()
 
         out = np.squeeze(outputs)
-
+#region Comments
         # Ασφαλής Διαχείριση Output και προετοιμασία για NMS. 
-        # Εδώ διασφαλίζουμε ότι το output έχει τη σωστή μορφή, ανεξάρτητα από το αν το μοντέλο επέστρεψε 1D ή 2D array,
+        # Εδώ διασφαλίζουμε ότι το output έχει τη σωστή μορφή, 
+        # ανεξάρτητα από το αν το μοντέλο επέστρεψε 1D ή 2D array,
         #  ή αν τα δεδομένα είναι σε xywh format ή normalized.
+#endregion
         if out.ndim == 2:
             if out.shape[0] < out.shape[1] and out.shape[0] in (5, 6, 7, 8, 85, 84):
                 out = out.T
@@ -113,19 +115,21 @@ class InferencePipeline:
             return []
 
         # NMS
-        idxs = cv2.dnn.NMSBoxes(boxes, confs, config.CONF_THRESHOLD, config.NMS_THRESHOLD)
-        if len(idxs) == 0:
+        indexes = cv2.dnn.NMSBoxes(boxes, confs, config.CONF_THRESHOLD, config.NMS_THRESHOLD)
+        if len(indexes) == 0:
             return []
 
         results = []
-        for it in idxs:
-            k = int(it[0]) if isinstance(it, (list, tuple, np.ndarray)) else int(it)
+        for item in indexes:
+            k = int(item[0]) if isinstance(item, (list, tuple, np.ndarray)) else int(item)
             bx = boxes[k]
             conf = confs[k]
-
-            # OCR Logic - Προσπαθούμε να αναγνωρίσουμε την πινακίδα μέσα στο ανιχνευμένο πλαίσιο. 
-            # Εάν το απευθείας ROI δεν δουλέψει (π.χ. λόγω μεγέθους ή μορφής), αποθηκεύουμε προσωρινά την εικόνα και προσπαθούμε ξανά,
+#region comments
+            # OCR Logic - Προσπαθούμε να αναγνωρίσουμε την πινακίδα μέσα στο ανιχνευμένο 
+            # πλαίσιο. Εάν το απευθείας ROI δεν δουλέψει (π.χ. λόγω μεγέθους ή μορφής), 
+            # αποθηκεύουμε προσωρινά την εικόνα και προσπαθούμε ξανά,
             #  για να αυξήσουμε τις πιθανότητες επιτυχίας.
+#endregion
             roi = frame_bgr[bx[1]:bx[1] + bx[3], bx[0]:bx[0] + bx[2]]
             raw_text = ""
             

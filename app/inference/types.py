@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import  Tuple
 
 #Dataclass για να περνάμε τα αποτελέσματα της ανίχνευσης καθαρά.
-
 @dataclass
 class DetectionResult:
     box: Tuple[int, int, int, int]  # [x, y, w, h]
