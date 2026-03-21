@@ -5,12 +5,12 @@ import PIL.Image, PIL.ImageTk
 import threading
 import time
 import os
-import traceback
 from app.services.logger import log_error, log_detection
 from app.utils.pathfinder import Labyrinth
 from app.core.session import SessionManager
 import app.core.config1 as config
 from app.services.user_services import UserManagementService
+from app.services.services import AuthService
 from app.services.vehicle_services import VehicleService 
 from app.utils.sound import SoundGenerator as sound
 
@@ -18,15 +18,12 @@ class MainWindow:
     def __init__(self, root, title, container):
         self.root = root
         self.root.title(title)
-        self.root.geometry("1000x750")
-        
+        self.root.geometry("1000x750")        
         self.root.protocol("WM_DELETE_WINDOW", self.on_exit)
-
         self.container = container
         self.pipeline = container.pipeline
         self.detection_service = container.detection_service
         self.sound_gen = sound()
-
         self.is_running = False
         self.cap = None
         self.lock = threading.Lock()
@@ -138,7 +135,8 @@ class MainWindow:
         return result["model"]
 
     def start_camera(self):
-        # Button έναρξης ροής από την κάμερα. Με την έναρξη - προτρέπεται ο χρήστης να επιλέξει μοντέλο OCR
+        # Button έναρξης ροής από την κάμερα. Με την έναρξη - προτρέπεται ο 
+        # χρήστης να επιλέξει μοντέλο OCR
         if self.is_running:
             return
 
@@ -162,10 +160,11 @@ class MainWindow:
             self.lbl_video.config(text="")
             self.status_var.set("Scanning...")
 
-
-            # SOS !!! Πολύ σημαντικό - διαχείριση threads γιατί χωρίς διάκριση - ο έλεγχος από το OCR
-            # "παγώνει" την εκτέλεση του υπόλοιπου κώδικα. 
-
+#region Comments
+            # SOS !!! Πολύ σημαντικό - διαχείριση threads γιατί χωρίς 
+            # διάκριση - ο έλεγχος από το OCR "παγώνει" την εκτέλεση 
+            # του υπόλοιπου κώδικα. 
+#endregion
             threading.Thread(target=self.capture_thread, daemon=True).start()
             threading.Thread(target=self.detect_thread, daemon=True).start()
             self.update_gui_frame()
@@ -271,7 +270,6 @@ class MainWindow:
             except Exception as e:
                 print(f"\n[ΣΦΑΛΜΑ ΣΤΟ DETECT THREAD]: {e}")
                 log_error("DetectThreadError", "gui_main.py", str(e))
-                traceback.print_exc()
                 with self.lock:
                     self.latest_results = []
                 time.sleep(1)
@@ -335,14 +333,12 @@ class MainWindow:
         cmb_status.pack()
         
         btn_save = tk.Button(add_win, text="Αποθήκευση", bg="#c0392b", fg="white", font=("Arial", 10, "bold"), width=15)
-
-
-
+#region Comments
 # -----------------------------------------------------
 #   SOS !!!  Δημιουργία functions για να τρέξουν ΑΣΥΓΧΡΟΝΑ  σε δικό τους thread (lib threading) ώστε η αποθήκευση
 #           των δεδομένων που έχει εισάγει ο χρήστης σαν νέο "STOLEN/WANTED" όχημα , να γίνει χωρίς να "κολλάει" η 
 #           υπόλοιπη διεπαφή.
-
+#endregion
         def _bg_task(plate, status):
             try:
                 success, msg = VehicleService.add_stolen_vehicle(plate, status)
@@ -396,17 +392,18 @@ class MainWindow:
     def on_exit(self):
         # Exit button - για το ομαλό κλείσιμο της εφαρμογής.
         if messagebox.askokcancel("Exit", "Quit system?"):
-            SessionManager.clear()
+            AuthService.logout()
             self.stop_camera()
             self.root.destroy()
             os._exit(0)
 
     def open_user_management(self):
+        #region Comments
         # Διαχείριση χρηστών - User Management
         # Ελεγχος πρώτα με βάση το RBAC - το policy είναι ΜΟΝΟ user.role.ADMINISTRATOR Μπορεί να το χειριστεί!
         # ΔΕΝ έχουμε τα Policies σε ξεχωριστό αρχείο policy.py λόγω μεγέθους εφαρμογής- ΚΑΝΟΝΙΚΑ ΠΡΕΠΕΙ.
         # Εδώ το χειριζόμαστε "μπακαλίστικα" - απλουστευμένα - ακατάλληλο για Enterprize class εφαρμογή!
-
+        #endregion
         if SessionManager.get_role() != "ADMINISTRATOR":
             messagebox.showerror("Access Denied", "Μόνο ο ΔΙΑΧΕΙΡΙΣΤΗΣ έχει πρόσβαση.", parent=self.root)
             return
