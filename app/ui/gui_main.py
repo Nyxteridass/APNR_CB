@@ -14,8 +14,6 @@ from app.services.user_services import UserManagementService
 from app.services.vehicle_services import VehicleService 
 from app.utils.sound import SoundGenerator as sound
 
-
-
 class MainWindow:
     def __init__(self, root, title, container):
         self.root = root
@@ -317,8 +315,7 @@ class MainWindow:
         
         self.root.after(0, lambda: self.status_var.set(status_text))
         self.root.after(0, lambda: self.lbl_status.config(bg=color, fg="white"))
-
-    
+ 
     def add_vehicle(self):
         # Άνοιγμα παραθύρου εισαγωγής νέας πινακίδας οχήματος στη βάση 
         add_win = tk.Toplevel(self.root)
@@ -404,7 +401,6 @@ class MainWindow:
             self.root.destroy()
             os._exit(0)
 
-  
     def open_user_management(self):
         # Διαχείριση χρηστών - User Management
         # Ελεγχος πρώτα με βάση το RBAC - το policy είναι ΜΟΝΟ user.role.ADMINISTRATOR Μπορεί να το χειριστεί!

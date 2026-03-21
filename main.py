@@ -1,21 +1,12 @@
-#import os
-#import sys
 import tkinter as tk
 from app.ui.gui_login import LoginWindow
 from app.ui.gui_main import MainWindow
 from app.core.container import Container
 
 
-
-# Προσθήκη του τρέχοντος φακέλου στο path για να βρίσκει τα modules
-#sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-
-
 def launch_main_app():
     # Η συνάρτηση που καλείται μετά από επιτυχημένο login και ξεκινάει το κύριο παράθυρο.
-    root = tk.Tk()
-    
+    root = tk.Tk()    
     # Αρχικοποίηση Container (Inference + Services)
     # Εδώ φορτώνονται τα μοντέλα ONNX και η σύνδεση με τη ΒΔ
     try:

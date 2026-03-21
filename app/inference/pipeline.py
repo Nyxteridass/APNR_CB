@@ -30,8 +30,7 @@ class InferencePipeline:
         
             log_error(error_type, file_name, str(e))
             self.recognizer = None
-    
-    
+      
     def load_ocr(self, model_name):
         try:
             self.recognizer = LicensePlateRecognizer(model_name)
@@ -41,8 +40,6 @@ class InferencePipeline:
         
             log_error(error_type, file_name, str(e))
             self.recognizer = None
-    
-    
     
     def detect_and_ocr(self, frame_bgr):
         if self.net is None or frame_bgr is None:
