@@ -227,10 +227,10 @@ class MainWindow:
                     continue
 
                 current_time = time.time()
-
+#region Comments
         #-------------------------------------------------------------#
         # SOS !!! - Πέρασμα του ελέγχου στο inference.pipeline.py
-          
+#endregion
                 results = self.pipeline.detect_and_ocr(frame)
 
                 with self.lock:
@@ -243,10 +243,10 @@ class MainWindow:
                         conf = res.get('confidence', 0.0)
                         if not plate: 
                             continue
-
+#region Comments
             #---------------------------------------------------------
             # SOS ! Περνάμε τον έλεγχο στο detection_service για να τρέξει τον έλεγχο της βάσης με τη σειρά του
-            
+#endregion
                         db_info = self.detection_service.process_detected_plate(plate)
                        
                         if db_info:
@@ -256,8 +256,7 @@ class MainWindow:
                                 self.sound_gen.play_alert_beep()
                             else:
                                 # Αλλιώς το buzzer αναπαράγει μόνο ένα "scan_beep" για ΗΧΗΤΙΚΟ FEEDBACK
-                                self.sound_gen.play_scan_beep()
-                                
+                                self.sound_gen.play_scan_beep()                               
                             log_detection(
                                 plate=db_info['plate'], 
                                 status=db_info['status'], 
@@ -265,8 +264,7 @@ class MainWindow:
                                 ocr_model=getattr(self, 'current_ocr_model', 'Unknown')
                             )
                                 
-                    self.last_ocr_time = time.time()
-                    
+                    self.last_ocr_time = time.time()                   
             except Exception as e:
                 print(f"\n[ΣΦΑΛΜΑ ΣΤΟ DETECT THREAD]: {e}")
                 log_error("DetectThreadError", "gui_main.py", str(e))
@@ -419,7 +417,7 @@ class MainWindow:
 
         # Πρώτο tab : CREATE
         tab_create = tk.Frame(tabs)
-        tabs.add(tab_create, text="➕ Create User")
+        tabs.add(tab_create, text="Create User")
 
         tk.Label(tab_create, text="Username:").pack(pady=(20, 5))
         new_username_input = tk.Entry(tab_create, width=30)
@@ -457,7 +455,7 @@ class MainWindow:
 
         # Δεύτερο tab : MANAGE
         tab_manage = tk.Frame(tabs)
-        tabs.add(tab_manage, text="📋 Manage Users")
+        tabs.add(tab_manage, text="Manage Users")
 
         columns = ("id", "username", "role")
         tree = ttk.Treeview(tab_manage, columns=columns, show="headings", height=10)
@@ -532,7 +530,7 @@ class MainWindow:
 
         btn_frame = tk.Frame(tab_manage)
         btn_frame.pack(pady=5)
-        tk.Button(btn_frame, text="✏️ Edit", bg="#f39c12", fg="white", command=update_user).pack(side=tk.LEFT, padx=10)
-        tk.Button(btn_frame, text="🗑️ Delete", bg="#c0392b", fg="white", command=delete_user).pack(side=tk.LEFT, padx=10)
+        tk.Button(btn_frame, text="Edit", bg="#f39c12", fg="white", command=update_user).pack(side=tk.LEFT, padx=10)
+        tk.Button(btn_frame, text="Delete", bg="#c0392b", fg="white", command=delete_user).pack(side=tk.LEFT, padx=10)
 
         load_users()
