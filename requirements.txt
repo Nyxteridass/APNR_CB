@@ -1,6 +1,7 @@
 opencv-python
 numpy
 SQLAlchemy
+onnxruntime
 bcrypt
 fast-plate-ocr
 Pillow
