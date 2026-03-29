@@ -54,7 +54,17 @@
 πχ για την περίπτωση που εκτελείται σε περιβάλλον με την Python v3 εγκατεστημένη: 
 "python3 -m main" ΑΠΟ ΤΟΝ ΑΡΧΙΚΟ ΦΑΚΕΛΟ ΤΗΣ ΕΦΑΡΜΟΓΗΣ και ΧΩΡΙΣ την κατάληξη ".py"
 
+=================================================================================================================================================
+Special thanks to:
 
+fast-plate-ocr :
+https://ankandrew.github.io/fast-plate-ocr/latest/reference/inference/hub
+
+license-plate-detector model : 
+https://huggingface.co/morsetechlab/yolov11-license-plate-detection/tree/main
+
+Ultralytics :  YOLOv11
+Roboflow Universe dataset 4.0
 =================================================================================================================================================
 
 ## 🛡️ License & Open Source Compliance
